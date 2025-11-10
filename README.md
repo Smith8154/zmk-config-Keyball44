@@ -1,3 +1,11 @@
+# A note to others
+This repository is my attempt to get the OFFICIAL Keyball44 (by Yowkees) working with ZMK. I have been unsuccessful, but will document my experience thus far in case anyone else would like to try and build on what I have done to get your Keyball44 working with ZMK.
+
+## The issue
+I bought my Keyball44 from Yushakobo in Japan. This is the official version of the Keyball44 made by Yowkees. It seems like there may be some other vendors on other places (like Aliexpress) that sell a slightly different version of the Keyball44. The official version of the Keyball44 uses the PMW3360 sensor for the trackball, but it seems like some unofficial vendors instead use the PMW3610 sensor. These sensors have all kinds of different requirements, including pinouts and drivers. The PMW3610 has much better ZMK support and much lower power draw, while the PMW3660 has significantly higher power draw and requires different pins to be used in ZMK. The big issue is that the official Keyball44 does not have the MOTION pin wired to anything on the PCB. This is required in ZMK to avoid polling the device, which would use even more power. I have not been able to find a driver that supports polling for this sensor, and even if you were able to find one, the battery life would be even worse. IF you wanted to make this work, all you would need to do would be clone this repo, bodge a wire from the MOTION pin directly on the optical sensor to an unsed pin on the nice!nano (this would be any of the pins on the back side of the board), then update `keyball44_right.overlay` (I made a comment on the pin that needs to be updated). That, in theory, should get it working, but for now I will be switching back to a pro micro and using wired communication. If you would like any help or have any further advice (potentialy on better drivers), I have opened up this repo for issues, so just open up an issue.
+
+## Original text from the cloned repo
+
 This keeb created by a group of people who loves keyball.
 
 Special Thanks to: <br>
